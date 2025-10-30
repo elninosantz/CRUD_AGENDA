@@ -1,5 +1,5 @@
 from create_agenda import insert_contact, search_contacts, display_contact
-from edit_agenda import edit_contact
+from edit_agenda import edit_contact, delete_contact
 
 if __name__ == '__main__':
     agenda = {}
@@ -26,7 +26,8 @@ if __name__ == '__main__':
                 search_contacts(agenda)
             elif select_option == '4':
                 edit_contact(agenda)
-
+            elif select_option == '5':
+                delete_contact(agenda)
             elif select_option == '0':
                 break
         except Exception as e:

@@ -1,4 +1,4 @@
-from create_agenda import display_contact
+import os
 
 def edit_contact(agenda):
     contato = input('Digite o contato que deseja editar: ')
@@ -8,6 +8,17 @@ def edit_contact(agenda):
             dado['telefone'] = input('Digite o telefone do contato: ')
             dado['email'] = input('Digite o email do contato: ')
             dado['endereco'] = input('Digite o endereco do contato: ')
-        print('Contato foi atualizado!')
+        os.system('cls')
+        print(f'Contato {contato} foi atualizado!')
     else:
         print(f'{contato} não foi encontrado!')
+
+
+def delete_contact(agenda):
+    contato = input('Digite o contato que deseja deletar: ')
+    if contato in agenda:
+        os.system('cls')
+        print('Contato {contato} foi deletado!')
+        agenda.pop(contato)
+    else:
+        print(f'{contato} não encontrado!')
