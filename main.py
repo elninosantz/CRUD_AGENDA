@@ -1,11 +1,12 @@
 from agenda import insert_contact, search_contacts, display_contact
 from agenda import edit_contact, delete_contact
+import os
+
 
 if __name__ == '__main__':
-    agenda = {}
-    while True:
-
-        try:
+    try:
+        agenda = {}
+        while True:
             print('''
     SELECIONE A OPÇÃO:
     [1] Para adcionar contatos
@@ -30,5 +31,6 @@ if __name__ == '__main__':
                 delete_contact(agenda)
             elif select_option == '0':
                 break
-        except Exception as e:
-            print(f'Error: {e}')
+    except KeyboardInterrupt:
+        os.system('cls')
+        print('\nPrograma finalizado com sucesso!')
