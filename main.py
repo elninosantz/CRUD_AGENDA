@@ -3,7 +3,7 @@ from agenda import edit_contact, delete_contact
 import os
 
 
-if __name__ == '__main__':
+def main():
     try:
         agenda = {}
         while True:
@@ -19,7 +19,8 @@ if __name__ == '__main__':
             ''')
             select_option = input('Digite a opção desejada: ')
             if select_option == '1':
-                agenda = insert_contact(agenda)
+                contato = input('Digite o nome do contato: ')
+                agenda = insert_contact(agenda, contato)
             elif select_option == '2':
                 print(agenda)
                 display_contact(agenda)
@@ -34,3 +35,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         os.system('cls')
         print('\nPrograma finalizado com sucesso!')
+
+
+if __name__ == '__main__':
+    main()

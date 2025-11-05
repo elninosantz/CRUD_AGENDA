@@ -43,26 +43,35 @@ def search_contacts(agenda):
         print(f'{contato} Não existe!')
 
 
-def insert_contact(agenda):
-    contato = input('Digite o nome do contato: ')
-    if contato in agenda:
+def collect_contact_data():
+    telefone = input('Digite o telefone do contato: ')
+    email = input('Digite o email do contato: ')
+    endereco = input('Digite o endereço do contato: ')
+    return endereco, telefone, email
+
+
+def create_new_contact(agenda, contato):
+    endereco, telefone, email = collect_contact_data()
+    agenda[contato] = []
+    id_contato = len(agenda[contato]) + 1
+    agenda[contato].append({'ID': id_contato, 'telefone': telefone, 'email': email, 'endereco': endereco})
+    print(f'Contato de {contato} adicionado com sucesso!')
+    return agenda
+
+
+def insert_contact(agenda, contato):
+    if contato not in agenda:
+        agenda_un = create_new_contact(agenda, contato)
+        return agenda_un
+    else:
         "SE O CONTATO EXISTE DENTRO DA AGENDA"
         print(f'Foi encontado o contato: {contato}')
         escolha = input('Quer adicionar mais um dado nesse contato (s/)? ')
         if escolha.lower() == 's':
-            pass
+            agenda_un = create_new_contact(agenda, contato)
+            return agenda_un
         else:
-            os.system('cls')
-            print('Operação cancelada, retornando para o menu.')
             return agenda
-    telefone = input('Digite o telefone do contato: ')
-    email = input('Digite o email do contato: ')
-    endereco = input('Digite o endereço do contato: ')
-    if contato not in agenda:
-        agenda[contato] = []
-    id_contato = len(agenda[contato]) + 1
-    agenda[contato].append({'ID': id_contato, 'telefone': telefone, 'email': email, 'endereco': endereco})
-    os.system('cls')
-    print(f'Contato de {contato} adicionado com sucesso!')
-    return agenda
+
+
 
