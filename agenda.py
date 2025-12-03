@@ -17,25 +17,29 @@ def mostrar_contatos():
     Intera sobre os contatos de dentro da AGENDA, passando esses contatos para a func buscar contato
     :return:
     """
-    for contato in AGENDA:
-        buscar_contatos(contato)
+    if AGENDA:
+        quantidade_contatos = len(AGENDA)
+        for contato_ in AGENDA:
+            buscar_contatos(contato_)
+        print(f'>>> Total de Contatos: {quantidade_contatos} <<<')
+    else:
+        print('>>> Nenhum contato para exibir! <<<')
 
-
-def buscar_contatos(contato):
+def buscar_contatos(contato_):
     """
     verifica se existe o contato dentro de agenda, se existir ele imprime os valores de detro da agenda
-    :param contato:
+    :param contato_:
     :return:
     """
-    if contato in AGENDA:
+    if contato_ in AGENDA:
         print('=' * 50)
-        print('Nome:', contato.title())
-        print('Telefone:', AGENDA[contato]['telefone'])
-        print('E-Mail:', AGENDA[contato]['email'])
-        print('Endereço:', AGENDA[contato]['endereco'])
+        print('Nome:', contato_.title())
+        print('Telefone:', AGENDA[contato_]['telefone'])
+        print('E-Mail:', AGENDA[contato_]['email'])
+        print('Endereço:', AGENDA[contato_]['endereco'])
 
     else:
-        print(f'>>> Contato {contato} Não Encontrado <<<')
+        print(f'>>> Contato {contato_} Não Encontrado <<<')
 
 
 def adcionar_dados():
@@ -49,14 +53,14 @@ def adcionar_dados():
     return telefone, email, endereco
 
 
-def dados_contatos(contato):
+def dados_contatos(contato_):
     """
     adiciona os valores retornados do contato em um dict
-    :param contato:str
+    :param contato_:str
     :return: none
     """
     telefone, email, endereco = adcionar_dados()
-    AGENDA[contato] = {
+    AGENDA[contato_] = {
         'telefone': telefone,
         'email': email,
         'endereco': endereco,
@@ -68,13 +72,16 @@ def incluir_contato():
     caso não exista o contato, cria um
     :return:
     """
-    contato = input('Digite o contato que queira adicionar: ')
-    contato = limpar_texto(contato)
-    if contato not in AGENDA:
-        dados_contatos(contato)
-        print(f'>>>>> Contato {contato} Adicionado com Sucesso <<<<<')
+    contato_ = input('Digite o contato que queira adicionar: ')
+    contato_ = limpar_texto(contato_)
+    if contato_ != '':
+        if contato_ not in AGENDA:
+            dados_contatos(contato_)
+            print(f'>>> Contato {contato_} Adicionado com Sucesso <<<')
+        else:
+            print(f'Já existe o contato {contato_}!')
     else:
-        print(f'Já existe o contato {contato}!')
+        print('Digite um contato!')
 
 
 def editar_contato():
@@ -82,27 +89,30 @@ def editar_contato():
     caso exista o contato edita os valores
     :return:
     """
-    contato = input('Digite o contato que queira editar: ')
-    contato = limpar_texto(contato)
-    if contato not in AGENDA:
-        print(f'>>>>> O Contato {contato} não existe! <<<<<')
+    contato_ = input('Digite o contato que queira editar: ')
+    contato_ = limpar_texto(contato_)
+    if contato_ != '':
+        if contato_ not in AGENDA:
+            print(f'>>> O Contato {contato_} não existe! <<<')
+        else:
+            dados_contatos(contato_)
+            print(f'>>> Contato {contato_} editado com Sucesso <<<')
     else:
-        dados_contatos(contato)
-        print(f'>>>>> Contato {contato} editado com Sucesso <<<<<')
+        print('Digite um contato!')
 
 
-def excluir_contato(contato):
+def excluir_contato(contato_):
     """
     exclui contato caso ele exista
 
-    :param contato:
+    :param contato_:
     :return:
     """
-    if contato not in AGENDA:
-        print(f'>>> Contato {contato} Não Encontrado <<<')
+    if contato_ not in AGENDA:
+        print(f'>>> Contato {contato_} Não Encontrado <<<')
     else:
-        del AGENDA[contato]
-        print(f'>>>>> Contato {contato} Excluido com Sucesso <<<<<')
+        del AGENDA[contato_]
+        print(f'>>> Contato {contato_} Excluido com Sucesso <<<')
 
 
 def menu():
@@ -128,25 +138,30 @@ MENU DA AGENDA:
     opcao = input('ESCOLHA 1 OPÇÃO VALIDA(Ex: 1): ')
     return opcao
 
-while True:
-    opcao = menu()
-    match opcao:
-        case '1':
-            mostrar_contatos()
-        case '2':
-            contato = input('Digite o contato que deseja Visualizar: ')
-            contato = limpar_texto(contato)
-            buscar_contatos(contato)
-        case '3':
-            incluir_contato()
-        case '4':
-            editar_contato()
-        case '5':
-            contato = input('Digite o contato que deseja excluir: ')
-            contato = limpar_texto(contato)
-            excluir_contato(contato)
-        case '0':
-            print('>>> PROGRAMA ENCERRADO <<<')
-            break
-        case _:
-            print('>>> DIGITE UMA OPÇÃO VALIDA!! <<<')
+try:
+    while True:
+        opcao_ = menu()
+        match opcao_:
+            case '1':
+                mostrar_contatos()
+            case '2':
+                contato = input('Digite o contato que deseja Visualizar: ')
+                contato = limpar_texto(contato)
+                if contato != '':
+                    buscar_contatos(contato)
+            case '3':
+                incluir_contato()
+            case '4':
+                editar_contato()
+            case '5':
+                contato = input('Digite o contato que deseja excluir: ')
+                contato = limpar_texto(contato)
+                if contato != '':
+                    excluir_contato(contato)
+            case '0':
+                print('>>> PROGRAMA ENCERRADO <<<')
+                break
+            case _:
+                print('>>> DIGITE UMA OPÇÃO VALIDA!! <<<')
+except KeyboardInterrupt:
+    print('\n>>> PROGRAMA ENCERRADO <<<')
