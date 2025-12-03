@@ -1,5 +1,12 @@
 AGENDA = {}
 
+
+def limpar_texto(texto):
+    texto1 = texto.strip()
+    texto2 = texto1.lower()
+    return texto2
+
+
 def mostrar_contatos():
     """
     Intera sobre os contatos de dentro da AGENDA, passando esses contatos para a func buscar contato
@@ -17,7 +24,7 @@ def buscar_contatos(contato):
     """
     if contato in AGENDA:
         print('=' * 50)
-        print('Nome:', contato)
+        print('Nome:', contato.title())
         print('Telefone:', AGENDA[contato]['telefone'])
         print('E-Mail:', AGENDA[contato]['email'])
         print('Endereço:', AGENDA[contato]['endereco'])
@@ -31,9 +38,9 @@ def adcionar_dados():
     salva em variaveis o valor dos dados do contato
     :return: str(telefone, email, endereco)
     """
-    telefone = input('Digite o telefone: ')
-    email = input('Digite o email: ')
-    endereco = input('Digite o endereco: ')
+    telefone = input('Digite o telefone: ').strip()
+    email = input('Digite o email: ').strip()
+    endereco = input('Digite o endereco: ').strip()
     return telefone, email, endereco
 
 
@@ -57,6 +64,7 @@ def incluir_contato():
     :return:
     """
     contato = input('Digite o contato que queira adicionar: ')
+    contato = limpar_texto(contato)
     if contato not in AGENDA:
         dados_contatos(contato)
         print(f'>>>>> Contato {contato} Adicionado com Sucesso <<<<<')
@@ -70,6 +78,7 @@ def editar_contato():
     :return:
     """
     contato = input('Digite o contato que queira editar: ')
+    contato = limpar_texto(contato)
     if contato not in AGENDA:
         print(f'>>>>> O Contato {contato} não existe! <<<<<')
     else:
@@ -121,6 +130,7 @@ while True:
             mostrar_contatos()
         case '2':
             contato = input('Digite o contato que deseja Visualizar: ')
+            contato = limpar_texto(contato)
             buscar_contatos(contato)
         case '3':
             incluir_contato()
@@ -128,6 +138,7 @@ while True:
             editar_contato()
         case '5':
             contato = input('Digite o contato que deseja excluir: ')
+            contato = limpar_texto(contato)
             excluir_contato(contato)
         case '0':
             print('>>> PROGRAMA ENCERRADO <<<')
