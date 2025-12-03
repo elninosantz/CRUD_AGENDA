@@ -2,6 +2,11 @@ AGENDA = {}
 
 
 def limpar_texto(texto):
+    """
+    Limpa whitespaces e padroniza o texto
+    :param texto:
+    :return:
+    """
     texto1 = texto.strip()
     texto2 = texto1.lower()
     return texto2
