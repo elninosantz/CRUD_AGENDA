@@ -21,7 +21,7 @@ def buscar_contatos(contato):
         print('Telefone:', AGENDA[contato]['telefone'])
         print('E-Mail:', AGENDA[contato]['email'])
         print('Endereço:', AGENDA[contato]['endereco'])
-        print('=' * 50)
+
     else:
         print(f'>>> Contato {contato} Não Encontrado <<<')
 
@@ -114,21 +114,23 @@ MENU DA AGENDA:
     opcao = input('ESCOLHA 1 OPÇÃO VALIDA(Ex: 1): ')
     return opcao
 
-
-opcao = menu()
-if opcao == '1':
-    mostrar_contatos()
-elif opcao == '2':
-    contato = input('Digite o contato que deseja Visualizar: ')
-    buscar_contatos(contato)
-elif opcao == '3':
-    incluir_contato()
-elif opcao == '4':
-    editar_contato()
-elif opcao == '5':
-    contato = input('Digite o contato que deseja excluir: ')
-    excluir_contato(contato)
-elif opcao == '0':
-    print('>>> PROGRAMA ENCERRADO <<<')
-else:
-    print('>>> DIGITE UMA OPÇÃO VALIDA!! <<<')
+while True:
+    opcao = menu()
+    match opcao:
+        case '1':
+            mostrar_contatos()
+        case '2':
+            contato = input('Digite o contato que deseja Visualizar: ')
+            buscar_contatos(contato)
+        case '3':
+            incluir_contato()
+        case '4':
+            editar_contato()
+        case '5':
+            contato = input('Digite o contato que deseja excluir: ')
+            excluir_contato(contato)
+        case '0':
+            print('>>> PROGRAMA ENCERRADO <<<')
+            break
+        case _:
+            print('>>> DIGITE UMA OPÇÃO VALIDA!! <<<')
