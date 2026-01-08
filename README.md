@@ -1,42 +1,48 @@
-# 📒 Agenda em Python (CRUD + Arquivos CSV)
+# 📒 Agenda em Python (CRUD + CSV)
 
-Um projeto simples de agenda desenvolvido durante o curso de Python da Solyd com funcionalidades de CRUD (Criar, Ler, Atualizar e Deletar), além de exportar e importar contatos através de arquivos CSV.
+Projeto de agenda desenvolvido em **Python**, com funcionalidades completas de **CRUD** (Criar, Ler, Atualizar e Deletar) e **persistência de dados em arquivos CSV**.  
+Foi criado durante o curso de Python da **[Solyd](https://solyd.com.br/)**, com foco em organização de código e fundamentos da linguagem.
 
-O objetivo do projeto é demonstrar:
-- Estruturação de código em módulos.
-- Uso de dicionários como base de dados em memória.
-- Persistência de dados em arquivos CSV.
-- Boas práticas com docstrings.
-- Interação com o usuário via terminal.
+---
+
+## 🎯 Objetivo do projeto
+
+Demonstrar, de forma prática:
+
+- Estruturação de código em módulos
+- Uso de **dicionários** como base de dados em memória
+- Persistência de dados utilizando **arquivos CSV**
+- Boas práticas com **docstrings**
+- Interação com o usuário via **terminal**
 
 ---
 
 ## 🚀 Funcionalidades
 
 - **Adicionar contato**  
-  Solicita nome, telefone, e-mail e endereço, normaliza os dados e salva na AGENDA.
+  Cadastro de nome, telefone, e-mail e endereço, com normalização dos dados.
 
 - **Editar contato**  
-  Atualiza informações de um contato existente.
+  Atualização de informações de contatos existentes.
 
 - **Excluir contato**  
-  Remove um contato da agenda.
+  Remoção de contatos da agenda.
 
 - **Buscar contato**  
-  Exibe os dados de um contato específico.
+  Consulta individual de contatos cadastrados.
 
-- **Exibir todos os contatos**  
-  Lista todos os contatos salvos.
+- **Listar contatos**  
+  Exibição de todos os contatos armazenados.
 
 - **Exportar contatos**  
-  Salva a agenda em `database.csv`.
+  Salvamento dos dados em `database.csv`.
 
 - **Importar contatos**  
-  Carrega dados de `database.csv` para a AGENDA.
+  Carregamento automático dos dados a partir de `database.csv`.
 
 ---
 
-## 🧠 Estrutura do Projeto
+## 🧠 Estrutura do projeto
 
 ```
 CRUD_AGENDA/
@@ -53,8 +59,8 @@ CRUD_AGENDA/
 
 ## 📝 Requisitos
 
-- Python 3.10+
-- Nenhuma biblioteca externa (somente built-ins)
+- Python **3.10+**
+- Nenhuma biblioteca externa (apenas módulos built-in)
 
 ---
 
@@ -66,26 +72,25 @@ No diretório raiz do projeto, execute:
 python main.py
 ```
 
-O sistema exibe um menu interativo no terminal.
+O sistema exibirá um **menu interativo no terminal**.
 
 ---
 
-## 💾 Persistência de Dados
+## 💾 Persistência de dados
 
-- Ao sair do programa, a agenda é exportada automaticamente para `database.csv`.  
-- Ao iniciar o programa, se o arquivo existir, os dados são importados para memória.
+- Ao encerrar o programa, a agenda é exportada automaticamente para `database.csv`
+- Ao iniciar, caso o arquivo exista, os dados são carregados para a memória
 
 ---
 
-## 📚 Sobre o código
+## 📚 Conceitos aplicados
 
-Este projeto faz uso de:
 - Estruturas de repetição (`while`)
-- Pattern matching (`match`)
+- Pattern Matching (`match`)
 - Manipulação de arquivos (`open`)
 - Manipulação de caminhos com `pathlib`
-- Dicionários como estrutura principal de dados
-- Docstrings detalhadas em estilo bullet-points
+- Uso de **dicionários** como estrutura principal de dados
+- Docstrings detalhadas para documentação do código
 
 ---
 
